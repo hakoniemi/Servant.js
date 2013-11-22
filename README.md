@@ -9,4 +9,4 @@ Dispatches four events:
 - previousbuttonclick
 - nextbuttonclick
 
-
+Also enables keyboard hiding when user clicks / focuses outside keyboard area.
