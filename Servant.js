@@ -1,4 +1,4 @@
-var Servant = (function() {
+;(function() {
     "use strict";
 
     var elems = document.querySelectorAll("input, textarea");
@@ -16,13 +16,13 @@ var Servant = (function() {
         var that = this;
 
         prevIndex = currIndex;
-        currIndex = evt.target.dataset.index;
+        currIndex = evt.target.dataset.servantIndex;
 
         if (!isKeyboardShown) {
             currentInnerHeight = window.innerHeight;
             keyboardShowing = window.setInterval(function() {
                 if (currentInnerHeight === window.innerHeight) {
-                    clearInterval(keyboardShowing);
+                    window.clearInterval(keyboardShowing);
 
                     var evtAfter = document.createEvent("Event");
                     evtAfter.initEvent('keyboardshow', true, true);
@@ -62,7 +62,7 @@ var Servant = (function() {
     };
 
     [].forEach.call(elems, function(elem, i) {
-        elem.dataset.index = i;
+        elem.dataset.servantIndex = elem.getAttribute("tabindex") || (i + 1);
         elem.addEventListener("focus", onelemfocus, false);
         elem.addEventListener("blur", onelemblur, false);
     });
@@ -77,7 +77,8 @@ var Servant = (function() {
         window.setTimeout(function() {
             isAClick = false;
         }, 1000);
-    })
+    });
+
     document.documentElement.addEventListener("touchend", function(evt) {
         if (pageXO !== window.pageXOffset || pageYO !== window.pageYOffset) {
             return false;
