@@ -1,7 +1,7 @@
 ;(function() {
     "use strict";
 
-    var elems = document.querySelectorAll("input, textarea");
+    var elems = document.querySelectorAll("input, textarea, [contenteditable]");
 
     var onelemfocus, onelemblur;
 
